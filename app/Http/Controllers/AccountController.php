@@ -246,5 +246,6 @@ class AccountController extends Controller
 
     public function myJobs()
     {
+        return view('front.account.job.myJobs');
     }
 }
