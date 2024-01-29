@@ -111,8 +111,7 @@
                         window.location.href = "{{ route('account.myJobApplications') }}"
                     }
                 })
-            } else {}
-
+            }
         }
     </script>
 @endsection
