@@ -49,7 +49,7 @@
                         <div class="descript_wrap white-bg">
                             <div class="single_wrap">
                                 <h4>Job description</h4>
-                                {!! nl2br($job->description) !!}
+                                {!! nl2br(strip_tags($job->description)) !!}
 
                             </div>
 
