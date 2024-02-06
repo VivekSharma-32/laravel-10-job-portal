@@ -42,6 +42,11 @@
                         <a class="btn btn-outline-primary me-2" href="{{ route('account.login') }}"
                             type="submit">Login</a>
                     @else
+                        @if (Auth::user()->role == 'admin')
+                            <a class="btn btn-outline-primary me-2" href="{{ route('admin.dashboard') }}"
+                                type="submit">
+                                Admin</a>
+                        @endif
                         <a class="btn btn-outline-primary me-2" href="{{ route('account.profile') }}" type="submit">My
                             Account</a>
                     @endif

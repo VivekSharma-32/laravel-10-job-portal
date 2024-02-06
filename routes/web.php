@@ -1,24 +1,10 @@
 <?php
 
 use App\Http\Controllers\AccountController;
+use App\Http\Controllers\admin\DashboardController;
 use App\Http\Controllers\HomeContoller;
 use App\Http\Controllers\JobsController;
 use Illuminate\Support\Facades\Route;
-
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider and all of them will
-| be assigned to the "web" middleware group. Make something great!
-|
-*/
-
-// Route::get('/', function () {
-//     return view('welcome');
-// });
 
 Route::get('/', [HomeContoller::class, 'index'])->name('home');
 Route::get('/jobs', [JobsController::class, 'index'])->name('jobs');
@@ -26,7 +12,12 @@ Route::get('/jobs/detail/{id}', [JobsController::class, 'detail'])->name('jobDet
 Route::post('/apply-job', [JobsController::class, 'applyJob'])->name('applyJob');
 Route::post('/save-job', [JobsController::class, 'saveJob'])->name('saveJob');
 
-
+Route::group(
+    ['prefix' => 'admin', 'middleware' => 'checkRole'],
+    function () {
+        Route::get('/dashboard', [DashboardController::class, 'index'])->name('admin.dashboard');
+    }
+);
 
 Route::group(['prefix' => 'account'], function () {
     // Guest Routes 
