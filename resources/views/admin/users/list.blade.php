@@ -65,9 +65,9 @@
                                                                         Edit</a>
                                                                 </li>
                                                                 <li>
-                                                                    <a onclick="#" class="dropdown-item"
-                                                                        href="#"><i class="fa fa-trash"
-                                                                            aria-hidden="true"></i>
+                                                                    <a onclick="deleteUser({{ $user->id }})"
+                                                                        class="dropdown-item" href="#"><i
+                                                                            class="fa fa-trash" aria-hidden="true"></i>
                                                                         Delete</a>
                                                                 </li>
                                                             </ul>
@@ -99,4 +99,23 @@
 @endsection
 
 @section('customJs')
+    <script type="text/javascript">
+        function deleteUser(id) {
+
+            if (confirm('Are you sure you want to delete this user?')) {
+                $.ajax({
+                    url: "{{ route('admin.users.destroy') }}",
+                    type: 'delete',
+                    data: {
+                        id: id
+                    },
+                    dataType: 'json',
+                    success: function(response) {
+                        window.location.href =
+                            "{{ route('admin.users') }}"; // Assuming 'index' route exists
+                    }
+                });
+            }
+        }
+    </script>
 @endsection
