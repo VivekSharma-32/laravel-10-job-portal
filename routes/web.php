@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AccountController;
 use App\Http\Controllers\admin\DashboardController;
+use App\Http\Controllers\admin\JobController;
 use App\Http\Controllers\admin\UserController;
 use App\Http\Controllers\HomeContoller;
 use App\Http\Controllers\JobsController;
@@ -21,6 +22,9 @@ Route::group(
         Route::get('/users/{id}', [UserController::class, 'edit'])->name('admin.users.edit');
         Route::put('/users/{id}', [UserController::class, 'update'])->name('admin.users.update');
         Route::delete('/users', [UserController::class, 'destroy'])->name('admin.users.destroy');
+
+        // Job Routes
+        Route::get('/jobs', [JobController::class, 'index'])->name('admin.jobs');
     }
 );
 
