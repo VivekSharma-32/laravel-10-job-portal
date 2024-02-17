@@ -25,6 +25,8 @@ Route::group(
 
         // Job Routes
         Route::get('/jobs', [JobController::class, 'index'])->name('admin.jobs');
+        Route::get('/jobs/edit/{id}', [JobController::class, 'edit'])->name('admin.jobs.edit');
+        Route::put('/jobs/{id}', [JobController::class, 'update'])->name('admin.jobs.update');
     }
 );
 
