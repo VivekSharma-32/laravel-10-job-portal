@@ -82,4 +82,23 @@ class JobController extends Controller
             ]);
         }
     }
+
+    public function destroy(Request $request)
+    {
+        $id = $request->id;
+        $job = Job::find($id);
+
+        if ($job == null) {
+            session()->flash('error', 'Either Job Deleted Or Not Found');
+            return response()->json([
+                'status' => false,
+            ]);
+        }
+
+        $job->delete();
+        session()->flash('success', 'Job Deleted successfully.');
+        return response()->json([
+            'status' => true,
+        ]);
+    }
 }

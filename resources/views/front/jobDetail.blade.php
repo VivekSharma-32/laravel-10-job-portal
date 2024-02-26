@@ -74,10 +74,11 @@
                             <div class="border-bottom"></div>
                             <div class="pt-3 text-end">
                                 @if (Auth::check())
-                                    <a href="#" class="btn btn-secondary">Save</a>
+                                    <a href="javascript:void(0)" onclick="saveJob({{ $job->id }})"
+                                        class="btn btn-secondary">Save</a>
                                 @else
-                                    <a href="#" onclick="saveJob({{ $job->id }})" href="javascript:void()"
-                                        class="btn btn-secondary disabled">Save</a>
+                                    <a href="javascript:void(0)" onclick="saveJob({{ $job->id }})"
+                                        href="javascript:void()" class="btn btn-secondary disabled">Save</a>
                                 @endif
                                 @if (Auth::check())
                                     <a href="#" onclick="applyJob({{ $job->id }})"
