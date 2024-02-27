@@ -100,14 +100,14 @@
         </div>
     </section>
 @endsection
-{{-- 
+
 @section('customJs')
     <script type="text/javascript">
         function deleteJobApplication(id) {
 
             if (confirm('Are you sure you want to delete this user?')) {
                 $.ajax({
-                    url: "{{ route('admin.jobs.destroy') }}",
+                    url: "{{ route('admin.jobApplications.destroy') }}",
                     type: 'delete',
                     data: {
                         id: id
@@ -115,10 +115,10 @@
                     dataType: 'json',
                     success: function(response) {
                         window.location.href =
-                            "{{ route('admin.jobs') }}"; // Assuming 'index' route exists
+                            "{{ route('admin.jobApplications') }}"; // Assuming 'index' route exists
                     }
                 });
             }
         }
     </script>
-@endsection --}}
+@endsection
